@@ -1,20 +1,19 @@
 from django.shortcuts import render
+from .models import product
 
 # Create your views here.
 
 def home (request):
-    return render(request, 'base.html')
+    return render(request, 'home/home.html')
 
 def products (request):
+    products = product.objects.all()
     context = {
-        'products' : [
-            {'name' : 'Apple watch',
-             'price' : '299.99',
-             'desription' : 'Aluminium case, starlight sport' },
-
-            {'name' : 'iphone14',
-             'price' : '799.99',
-             'description' : '128GB, midnight color'}
-             ]
+        'products' : products,
     }
+ 
     return render(request, 'home/products.html', context) 
+
+def clients (request):
+
+    return render(request, 'home/clients.html')
